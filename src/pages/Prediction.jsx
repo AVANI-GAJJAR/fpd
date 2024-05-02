@@ -28,7 +28,7 @@ const Prediction = () => {
         try {
           setLoading(true); 
           setData(null)
-          const response = await fetch('http://0.0.0.0:80/api/predict', {
+          const response = await fetch(`${process.env.REACT_APP_BASE_URI}/predict`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

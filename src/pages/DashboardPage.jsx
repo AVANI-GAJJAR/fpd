@@ -16,7 +16,7 @@ const proxyUrl = 'http://localhost:8080/';
 
   const fetchData = async () => {
     try{
-    const response = await axios.get('http://127.0.0.1:8000/api/predictions')
+    const response = await axios.get(`${process.env.REACT_APP_BASE_URI}/predictions`)
     const data = await response
     if(data){
     setData(data.data)
@@ -32,7 +32,7 @@ const proxyUrl = 'http://localhost:8080/';
   const fetchUser = async () => {
     try{
     const id = localStorage.getItem("id")
-    const response = await axios.get(`http://127.0.0.1:8000/api/user/${id}`)
+    const response = await axios.get(`${process.env.REACT_APP_BASE_URI}/user/${id}`)
     const data = await response
     if(data){
     setName(data.data.name)
