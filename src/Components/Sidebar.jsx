@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Avatar from 'react-avatar';
 
 const Sidebar = () => {
     const logout = () => {
@@ -24,6 +25,10 @@ const Sidebar = () => {
         else if (currentPath.includes('dashboard')) {
             setCurrent("dashboard")
         }
+        else if (currentPath.includes('report')) {
+            setCurrent("report")
+        }
+        
     },[currentPath])
 
     const fetchData = async () => {
@@ -71,8 +76,8 @@ const Sidebar = () => {
             <div className="w-60 fixed min-h-screen bg-[#4a4a4a] p-4 transition-all">
                 <ul className="list-none">
                     <li className="flex items-center mb-6">
-                        <div className="w-12 h-12 rounded-full overflow-hidden border-4 border-white">
-                            <img src="https://i.postimg.cc/SxbYPS5c/userimg.webp" alt="User" className="w-full" />
+                        <div className="overflow-hidden">
+                            <Avatar name={name} size='40' round={true}/>
                         </div>
                         <h2 className="text-white text-lg ml-3">{name}</h2>
                     </li>
@@ -84,6 +89,9 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <Link className={`text-white ml-3 flex items-center hover:bg-[#242424] bg-opacity-25 ${current === "statistics" && "bg-[#242424]"} rounded p-2 transition duration-500`} to={"/statistics"}>Statistics</Link>
+                    </li>
+                    <li>
+                        <Link className={`text-white ml-3 flex items-center hover:bg-[#242424] bg-opacity-25 ${current === "report" && "bg-[#242424]"} rounded p-2 transition duration-500`} to={"/report"}>Report</Link>
                     </li>
                     <li>
                         <button className="flex items-center bg-red-500 hover:bg-red-600 text-white rounded p-2 ml-3" onClick={logout}>Log Out</button>

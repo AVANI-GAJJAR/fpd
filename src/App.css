@@ -18,3 +18,11 @@ body{
 .segment-value{
     display: none !important;
 }
+
+.ant-tabs-tab-btn{
+  color: #000 !important;
+}
+
+.ant-tabs-tab-active{
+  color: #000 !important;
+}

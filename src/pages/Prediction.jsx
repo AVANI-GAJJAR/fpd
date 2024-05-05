@@ -74,7 +74,7 @@ const Prediction = () => {
           <Toaster />
           <div className={`${token && "ml-64"} w-full`}>
           <div className='w-full text-right p-5'>
-          <Link to="/login">Admin Login</Link>
+          {!token && <Link to="/login">Admin Login</Link>}
           </div>
             <div className='w-full items-center justify-center grid'>
                 <div>

@@ -37,7 +37,7 @@ const Login = () => {
             if (data.status === 'success') {
                 localStorage.setItem("token", data.jwt);
                 localStorage.setItem("id", data.id);
-                window.location.replace('/dashboard');
+                window.location.replace('/verify');
 
             } else {
                 toast.error(data.message);
@@ -51,6 +51,7 @@ const Login = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token")
+        localStorage.setItem("isVerified","false")
         if (token) {
             window.location.replace('/dashboard')
         }
