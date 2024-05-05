@@ -3,7 +3,10 @@ import ReactSpeedometer from "react-d3-speedometer";
 import { useState } from 'react';
 import {toast,Toaster} from 'react-hot-toast'
 import Loading from './Loading';
+import Sidebar from '../Components/Sidebar';
+import { Link } from 'react-router-dom';
 const Prediction = () => {
+    const token = localStorage.getItem("token")
     const [userData, setUserData] = useState({
         username: '',
       });
@@ -66,10 +69,14 @@ const Prediction = () => {
         // Update the state with the prediction result
       };
     return (
-        <div>
+        <div className='flex bg-[#fff] min-h-screen'>
+          {token && <Sidebar />}          
           <Toaster />
+          <div className={`${token && "ml-64"} w-full`}>
+          <div className='w-full text-right p-5'>
+          <Link to="/login">Admin Login</Link>
+          </div>
             <div className='w-full items-center justify-center grid'>
-                <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link>
                 <div>
                     <h1 className='text-[50px] font-bold my-12 text-center'>Fake Instagram<br></br> Account Detector</h1>
                     <p className=' mt-[-20px]  text-center'>Project accurately discerns fake social media accounts, bolstering online trust with precise <br></br>identification, ensuring platform integrity and user safety</p>
@@ -132,6 +139,7 @@ const Prediction = () => {
                     </div>
                 </div>
             </div>:""}
+            </div>
         </div>
     );
 }
